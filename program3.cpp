@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string>
 #include "Filereader.h"
+#include "item.h"
 
 using namespace std;
 
@@ -41,7 +42,18 @@ int main(int argc, char ** argv){
 	size_t idx = 0;
 	num = stoi(reader.current(), &idx, 10);
 	idx++;
-	capacity = stoi(reader.current(idx, string::npos), NULL, 10);
+	capacity = stoi(reader.current().substr(idx, -1), NULL, 10);
+	reader.next();
+	Item items[num];
+	for(int i=0; i<num; i++){
+		int p = stoi(reader.current(), &idx, 10);
+		idx++;
+		int w = stoi(reader.current().substr(idx, -1), NULL, 10);
+		items[i]=Item((unsigned int) p,(unsigned int) w);
+		if(!reader.next())
+			break;
+	}
+	quicksort(items, 0, (unsigned int) num);
 	
 	
 	return 0;

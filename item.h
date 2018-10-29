@@ -3,13 +3,20 @@
 
 class Item{
 	private:
-		int profit;
-		int weight;
+		unsigned int profit;
+		unsigned int weight;
 	public:
-		Item(int p, int w){this->profit=p; this->weight=w;};
+		Item(unsigned int p, unsigned int w){this->profit=p; this->weight=w;};
+		Item(const Item &);
 		double respective() const {return ((double)profit)/weight;};
-		int getProfit() const {return this->profit;};
-		int getWeight() const {return this->weight;};
-}
+		unsigned int getProfit() const {return this->profit;};
+		unsigned int getWeight() const {return this->weight;};
+		bool operator==(const Item &) const;
+		bool operator=(const Item &);
+		bool operator>(const Item &) const;
+		bool operator<(const Item &) const;
+		bool operator>=(const Item &o) const {return !this->operator<(o);};
+		bool operator<=(const Item &o) const {return !this->operator>(o);};
+};
 
 #endif
