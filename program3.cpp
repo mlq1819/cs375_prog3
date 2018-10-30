@@ -55,7 +55,7 @@ int main(int argc, char ** argv){
 		capacities[capacities.size()-1] = stoi(reader.current().substr(idx, -1), NULL, 10);
 		Item items[nums[nums.size()-1]];
 #if DEBUG
-cout << "Reading next " << nums[num.size()-1] << " lines; Capacity=" << capacities[capacities.size()-1] << endl;
+cout << "Reading next " << nums[nums.size()-1] << " lines; Capacity=" << capacities[capacities.size()-1] << endl;
 #endif
 		reader.next();
 		for(int i=0; i<nums[nums.size()-1]; i++){
