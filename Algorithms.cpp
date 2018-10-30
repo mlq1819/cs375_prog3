@@ -84,7 +84,7 @@ bool isSorted(const Item * A, size_t size){
 }
 
 Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
-	this->items=Items[size];
+	this->items = (Item[size]);
 	for(unsigned int i=0; i<size; i++)
 		this->items[i]=Item(items[i]);
 	this->size=size;
