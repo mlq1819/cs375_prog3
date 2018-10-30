@@ -190,6 +190,9 @@ cout << "idx " << cur_idx << " non-promising: weight=" << cur_weight << "; bound
 #endif
 			return 0;
 		}
+#if DEBUG
+cout << "idx " << cur_idx << " promising: weight=" << cur_weight << "; bound=" << cur_bound << "; best=" << cur_best << endl;
+#endif
 		unsigned int take = backtrack_helper(cur_profit+this->items[cur_idx].getProfit(), cur_weight+this->items[cur_idx].getWeight(), cur_bound, max(cur_profit, cur_best), cur_idx+1);
 		unsigned int leave = backtrack_helper(cur_profit, cur_weight, cur_profit+getMaxPossible(cur_idx+1), max(take, cur_profit, cur_best), cur_idx+1);
 #if DEBUG
