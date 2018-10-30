@@ -38,6 +38,17 @@ unsigned int partition(Item * A, unsigned int low, unsigned int high){
 	return i;
 }
 
+void reverse(Item * A, unsigned int low, unsigned int high){
+	unsigned int i=low, j=high;
+	while(i<j){
+		Item a = Item(A[i]);
+		A[i]=A[j];
+		A[j]=a;
+		i++;
+		j--;
+	}
+}
+
 void quicksort(Item * A, unsigned int low, unsigned int high){
 #if DEBUG
 cout << "Entering quicksort: (p/w;p,w)" << endl;
@@ -46,6 +57,7 @@ for(unsigned int i=low; i<high; i++)
 cout << endl;
 #endif	
 	quicksort_helper(A,low,high-1);
+	reverse(A, low, high);
 #if DEBUG
 cout << "Exiting quicksort: (p/w;p,w)" << endl;
 for(unsigned int i=low; i<high; i++)
