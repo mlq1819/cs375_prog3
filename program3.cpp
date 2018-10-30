@@ -5,8 +5,10 @@
 #include <vector>
 #include <stdio.h>
 #include <string>
+#include <time.h>
 #include "Filereader.h"
 #include "item.h"
+#define DEBUG true
 
 using namespace std;
 
@@ -55,7 +57,24 @@ int main(int argc, char ** argv){
 	}
 	quicksort(items, 0, (unsigned int) num);
 	Algorithm alg = Algorithm(items, (unsigned int) num, (unsigned int) capacity);
-	
-	
+	unsigned int computed_profit = 0;
+	clock_t t = clock();
+	switch(mode){
+		case 0:
+			computed_profit = alg.greedy1();
+			break;
+		case 1:
+			computed_profit = alg.greedy2();
+			break;
+		case 2:
+			computed_profit = alg.backtrack();
+	}
+	t = clock()-t;
+	float m = ((float) t)/CLOCKS_PER_SEC * 1000;
+	ofp << num << " " << computed_profit << " " << m << "\n";
+	ofp.close();
+#if DEBUG
+cout << num << " " << computed_profit << " " << m << endl;
+#endif
 	return 0;
 }
