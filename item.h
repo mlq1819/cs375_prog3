@@ -7,6 +7,7 @@ class Item{
 		unsigned int weight;
 	public:
 		Item(unsigned int p, unsigned int w){this->profit=p; this->weight=w;};
+		Item();
 		Item(const Item &);
 		double respective() const {return ((double)profit)/weight;};
 		unsigned int getProfit() const {return this->profit;};

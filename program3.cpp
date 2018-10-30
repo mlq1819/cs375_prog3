@@ -8,6 +8,8 @@
 #include <time.h>
 #include "Filereader.h"
 #include "item.h"
+#include "Algorithms.h"
+#define PRESORT true
 #define DEBUG true
 
 using namespace std;
@@ -17,7 +19,6 @@ int main(int argc, char ** argv){
 		printf("Not enough arguments: %d\n", argc);
 		return 1;
 	}
-	char * of_name = argv[2];
 	int mode = stoi(argv[3], NULL, 10);
 	
 	ifstream ifp;
@@ -55,7 +56,9 @@ int main(int argc, char ** argv){
 		if(!reader.next())
 			break;
 	}
+#if PRESORT
 	quicksort(items, 0, (unsigned int) num);
+#endif
 	Algorithm alg = Algorithm(items, (unsigned int) num, (unsigned int) capacity);
 	unsigned int computed_profit = 0;
 	clock_t t = clock();

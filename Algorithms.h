@@ -18,7 +18,7 @@ bool isSorted(const Item * A, size_t size);
 
 class Algorithm{
 	private:
-		Item* items;
+		Item * items;
 		size_t size;
 		unsigned int capacity;
 		unsigned int getMaxPossible() const;
