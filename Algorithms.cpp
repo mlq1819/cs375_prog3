@@ -77,7 +77,7 @@ void quicksort_helper(Item * A, unsigned int low, unsigned int high){
 
 bool isSorted(const Item * A, size_t size){
 	for(unsigned int i=1; i<size; i++){
-		if(A[i-1]>A[i])
+		if(A[i-1]<A[i])
 			return false;
 	}
 	return true;
