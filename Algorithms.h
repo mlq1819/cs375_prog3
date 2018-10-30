@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string>
 
+unsigned int max(unsigned int, unsigned int);
+unsigned int max(unsigned int, unsigned int, unsigned int);
 void swap(Item * A, unsigned int a, unsigned int b);
 unsigned int partition(Item * A, unsigned int low, unsigned int high);
 void quicksort(Item * A, unsigned int low, unsigned int high);
@@ -19,16 +21,17 @@ class Algorithm{
 		Item* items;
 		size_t size;
 		unsigned int capacity;
-		std::vector<Item> solution;
+		unsigned int getMaxPossible() const;
+		unsigned int getMaxPossible(unsigned int) const;
+		unsigned int greedy2_helper(unsigned int) const;
+		unsigned int backtrack_helper(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 	public:
 		Algorithm(Item *, size_t, unsigned int);
 		size_t getSize() const {return this->size;};
 		unsigned int getCapacity() const {return this->capacity;};
-		std::vector<Item> greedy1();
-		std::vector<Item> greedy2();
-		std::vector<Item> backtrack();
-		unsigned int getSolutionProfit() const;
-		unsigned int getSolutionSize() const {return this->solution.size();};
+		unsigned int greedy1();
+		unsigned int greedy2();
+		unsigned int backtrack();
 };
 
 #endif

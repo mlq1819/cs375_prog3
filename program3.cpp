@@ -54,6 +54,7 @@ int main(int argc, char ** argv){
 			break;
 	}
 	quicksort(items, 0, (unsigned int) num);
+	Algorithm alg = Algorithm(items, (unsigned int) num, (unsigned int) capacity);
 	
 	
 	return 0;
