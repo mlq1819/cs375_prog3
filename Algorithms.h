@@ -32,6 +32,7 @@ class Algorithm{
 		unsigned int backtrack_helper(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
 	public:
 		Algorithm(Item *, size_t, unsigned int);
+		~Algorithm();
 		size_t getSize() const {return this->size;};
 		unsigned int getCapacity() const {return this->capacity;};
 		unsigned int greedy1();
