@@ -58,8 +58,8 @@ void quicksort_helper(Item * A, unsigned int low, unsigned int high){
 	if(low<high){
 		unsigned int p = partition(A, low, high);
 		if(p>0)
-			quicksort(A, low, p-1);
-		quicksort(A, p+1, high);
+			quicksort_helper(A, low, p-1);
+		quicksort_helper(A, p+1, high);
 	}
 }
 
