@@ -39,6 +39,22 @@ unsigned int partition(Item * A, unsigned int low, unsigned int high){
 }
 
 void quicksort(Item * A, unsigned int low, unsigned int high){
+#if DEBUG
+cout << "Entering quicksort: (p/w;p,w)" << endl;
+for(unsigned int i=low; i<=high; i++)
+	cout << "(" << A[i].respective() << ";" << A[i].getProfit() << "," << A[i].getWeight() << ") ";
+cout << endl;
+#endif	
+	quicksort_helper(A,low,high);
+#if DEBUG
+cout << "Exiting quicksort: (p/w;p,w)" << endl;
+for(unsigned int i=low; i<=high; i++)
+	cout << "(" << A[i].respective() << ";" << A[i].getProfit() << "," << A[i].getWeight() << ") ";
+cout << endl;
+#endif	
+}
+
+void quicksort_helper(Item * A, unsigned int low, unsigned int high){
 	if(low<high){
 		unsigned int p = partition(A, low, high);
 		if(p>0)

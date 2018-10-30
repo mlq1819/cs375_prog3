@@ -17,6 +17,7 @@ unsigned int max(unsigned int, unsigned int, unsigned int);
 void swap(Item * A, unsigned int a, unsigned int b);
 unsigned int partition(Item * A, unsigned int low, unsigned int high);
 void quicksort(Item * A, unsigned int low, unsigned int high);
+void quicksort_helper(Item * A, unsigned int low, unsigned int high);
 bool isSorted(const Item * A, size_t size);
 
 class Algorithm{
