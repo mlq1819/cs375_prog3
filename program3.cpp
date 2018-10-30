@@ -9,7 +9,7 @@
 #include "Filereader.h"
 #include "item.h"
 #include "Algorithms.h"
-#define PRESORT false
+#define PRESORT true
 #ifndef DEBUG
 #define DEBUG true
 #endif
@@ -74,7 +74,7 @@ quicksort(items, 0, nums[nums.size()-1]);
 #endif
 		algs.push_back(Algorithm(items, (unsigned int) nums[nums.size()-1], (unsigned int) capacities[capacities.size()-1]));
 	} while(!reader.atEnd());
-	for(unsigned int i=0; i<nums.size(); i++){
+	for(unsigned int i=0; i<algs.size(); i++){
 		unsigned int computed_profit = 0;
 		clock_t t = clock();
 		switch(mode){
@@ -89,9 +89,9 @@ quicksort(items, 0, nums[nums.size()-1]);
 		}
 		t = clock()-t;
 		float m = ((float) t)/CLOCKS_PER_SEC * 1000;
-		ofp << nums[i] << " " << computed_profit << " " << m << "\n";
+		ofp << algs[i].getSize() << " " << computed_profit << " " << m << "\n";
 #if DEBUG
-cout << nums[i] << " " << computed_profit << " " << m << endl;
+cout << algs[i].getSize() << " " << computed_profit << " " << m << endl;
 #endif
 	}
 	ofp.close();
