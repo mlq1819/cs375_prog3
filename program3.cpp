@@ -10,7 +10,9 @@
 #include "item.h"
 #include "Algorithms.h"
 #define PRESORT true
+#ifndef DEBUG
 #define DEBUG true
+#endif
 
 using namespace std;
 

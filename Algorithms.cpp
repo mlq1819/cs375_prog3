@@ -82,13 +82,19 @@ unsigned int Algorithm::getMaxPossible(unsigned int start) const {
 }
 
 unsigned int Algorithm::greedy1(){
+#if DEBUG
+cout << "In Greedy1()" << endl;
+#endif
 	vector<Item> solution = vector<Item>();
 	if(!isSorted(this->items, this->size))
 		quicksort(this->items, 0, this->size);
 	unsigned int total_profit=0;
 	unsigned int total_weight=0;
 	for(unsigned int i=0; i<this->size; i++){
-		if(total_weight+this->items[i].getWeight()<=this->capacity){
+		if(total_weight+this->items[i].getWeight()<=this->capacity){	
+#if DEBUG
+cout << "Added item with p= " << this->items[i].getProfit() << ", w=" << this->items[i].getWeight() << endl;
+#endif
 			total_weight+=this->items[i].getWeight();
 			total_profit+=this->items[i].getProfit();
 			solution.push_back(Item(this->items[i]));
@@ -98,6 +104,9 @@ unsigned int Algorithm::greedy1(){
 }
 
 unsigned int Algorithm::greedy2(){
+#if DEBUG
+cout << "In Greedy2()" << endl;
+#endif
 	vector<Item> solution = vector<Item>();
 	if(!isSorted(this->items, this->size))
 		quicksort(this->items, 0, this->size);
@@ -122,6 +131,9 @@ unsigned int Algorithm::greedy2_helper(unsigned int i) const {
 }
 
 unsigned int Algorithm::backtrack(){
+#if DEBUG
+cout << "In backtrack()" << endl;
+#endif
 	if(!isSorted(this->items, this->size))
 		quicksort(this->items, 0, this->size);
 	unsigned int first_bound = getMaxPossible(0);
@@ -130,15 +142,26 @@ unsigned int Algorithm::backtrack(){
 
 unsigned int Algorithm::backtrack_helper(unsigned int cur_profit, unsigned int cur_weight, unsigned int cur_bound, unsigned int cur_best, unsigned int cur_idx){
 	if(cur_idx>=this->size){
+#if DEBUG
+cout << "Returning from idx " << cur_idx << endl;
+#endif
 		return 0;
 	} else {
 		bool promising = true;
 		promising = promising && cur_weight<=this->capacity;
 		promising = promising && cur_bound>cur_best;
-		if(!promising)
+		if(!promising){
+#if DEBUG
+cout << "idx " << cur_idx << " non-promising: weight=" << cur_weight << "; bound=" << cur_bound << "; best=" << cur_best << endl;
+#endif
 			return 0;
+		}
 		unsigned int take = backtrack_helper(cur_profit+this->items[cur_idx].getProfit(), cur_weight+this->items[cur_idx].getWeight(), cur_bound, max(cur_profit, cur_best), cur_idx+1);
 		unsigned int leave = backtrack_helper(cur_profit, cur_weight, cur_profit+getMaxPossible(cur_idx+1), max(take, cur_profit, cur_best), cur_idx+1);
+#if DEBUG
+if(max(take, cur_profit, leave)==cur_profit)
+	cout << "Returning from idx " << cur_idx << ": profit=" << cur_profit << endl;
+#endif
 		return max(take, cur_profit, leave);
 	}
 }

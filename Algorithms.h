@@ -8,6 +8,9 @@
 #include <vector>
 #include <stdio.h>
 #include <string>
+#ifndef DEBUG
+#define DEBUG true
+#endif
 
 unsigned int max(unsigned int, unsigned int);
 unsigned int max(unsigned int, unsigned int, unsigned int);
