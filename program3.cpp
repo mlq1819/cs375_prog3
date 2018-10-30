@@ -9,7 +9,7 @@
 #include "Filereader.h"
 #include "item.h"
 #include "Algorithms.h"
-#define PRESORT true
+#define PRESORT false
 #ifndef DEBUG
 #define DEBUG true
 #endif
@@ -54,11 +54,17 @@ int main(int argc, char ** argv){
 		idx++;
 		capacities[capacities.size()-1] = stoi(reader.current().substr(idx, -1), NULL, 10);
 		Item items[nums[nums.size()-1]];
+#if DEBUG
+cout << "Reading next " << nums[num.size()[1] << " lines; Capacity=" << capacities[capacities.size()-1] << endl;
+#endif
 		reader.next();
 		for(int i=0; i<nums[nums.size()-1]; i++){
 			int p = stoi(reader.current(), &idx, 10);
 			idx++;
 			int w = stoi(reader.current().substr(idx, -1), NULL, 10);
+#if DEBUG
+cout << "Read item: p=" << p << ";w=" << w << endl;
+#endif
 			items[i]=Item((unsigned int) p,(unsigned int) w);
 			if(!reader.next())
 				break;
