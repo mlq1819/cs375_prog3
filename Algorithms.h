@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <string>
 #ifndef DEBUG
-#define DEBUG true
+#define DEBUG false
 #endif
 
 unsigned int max(unsigned int, unsigned int);
