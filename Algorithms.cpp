@@ -89,6 +89,12 @@ Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
 		this->items[i]=Item(items[i]);
 	this->size=size;
 	this->capacity=capacity;
+#if DEBUG
+cout << "Created Algorithm Object" << endl;
+for(unsigned int i=0; i<size; i++)
+	cout << "(" << this->items[i].getProfit() << "," << this->items[i].getWeight() << ") "
+cout << endl;
+#endif
 }
 
 unsigned int Algorithm::getMaxPossible() const {
