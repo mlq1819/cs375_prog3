@@ -85,7 +85,6 @@ unsigned int Algorithm::greedy1(){
 #if DEBUG
 cout << "In Greedy1()" << endl;
 #endif
-	vector<Item> solution = vector<Item>();
 	if(!isSorted(this->items, this->size))
 		quicksort(this->items, 0, this->size);
 	unsigned int total_profit=0;
@@ -97,10 +96,9 @@ cout << "Added item with p= " << this->items[i].getProfit() << ", w=" << this->i
 #endif
 			total_weight+=this->items[i].getWeight();
 			total_profit+=this->items[i].getProfit();
-			solution.push_back(Item(this->items[i]));
 		}
 	}
-	return solution.size();
+	return total_profit;
 }
 
 unsigned int Algorithm::greedy2(){
