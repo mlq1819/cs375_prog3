@@ -59,10 +59,9 @@ Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
 	this->items=items;
 	this->size=size;
 	this->capacity=capacity;
-	this->solution=vector<Item>();
 }
 
-double Algorithm::getMaxPossible() const {
+unsigned int Algorithm::getMaxPossible() const {
 	return getMaxPossible(0);
 }
 
@@ -70,7 +69,7 @@ unsigned int Algorithm::getMaxPossible(unsigned int start) const {
 	unsigned int total_profit=0;
 	unsigned int total_weight=0;
 	unsigned int i = start;
-	while(i<this->size && total_weight+this->items[i]<=this->capacity){
+	while(i<this->size && total_weight+this->items[i].getWeight()<=this->capacity){
 		total_profit+=this->items[i].getProfit();
 		total_weight+=this->items[i].getWeight();
 	}
@@ -110,10 +109,10 @@ unsigned int Algorithm::greedy2(){
 	return gmax;
 }
 
-unsigned int Algorithm::greedy2_helper(unsigned int c) const {
-	if(c>=this->size)
+unsigned int Algorithm::greedy2_helper(unsigned int i) const {
+	if(i>=this->size)
 		return 0;
-	unsigned int h = greedy2_helper(c+1);
+	unsigned int h = greedy2_helper(i+1);
 	unsigned int j = this->items[i].getProfit();
 	if(this->items[i].getWeight()>this->capacity)
 		j=0;
@@ -125,11 +124,8 @@ unsigned int Algorithm::greedy2_helper(unsigned int c) const {
 unsigned int Algorithm::backtrack(){
 	if(!isSorted(this->items, this->size))
 		quicksort(this->items, 0, this->size);
-	unsigned int all_profit=0;
-	for(unsigned int i=0; i<this->size; i++)
-		all_profit+=this->items[i].getProfit();
 	unsigned int first_bound = getMaxPossible(0);
-	return backtrack_helper(0, 0, first_bound, all_profit, 0, 0);
+	return backtrack_helper(0, 0, first_bound, 0, 0);
 }
 
 unsigned int Algorithm::backtrack_helper(unsigned int cur_profit, unsigned int cur_weight, unsigned int cur_bound, unsigned int cur_best, unsigned int cur_idx){
