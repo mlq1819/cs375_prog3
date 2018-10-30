@@ -57,7 +57,7 @@ for(unsigned int i=low; i<high; i++)
 cout << endl;
 #endif	
 	quicksort_helper(A,low,high-1);
-	reverse(A, low, high);
+	reverse(A, low, high-1);
 #if DEBUG
 cout << "Exiting quicksort: (p/w;p,w)" << endl;
 for(unsigned int i=low; i<high; i++)
