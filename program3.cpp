@@ -48,11 +48,13 @@ int main(int argc, char ** argv){
 	capacities.push_back(0);
 	vector<Algorithm> algs = vector<Algorithm>();
 	size_t idx = 0;
+	reader.start();
 	do{
 		nums[nums.size()-1] = stoi(reader.current(), &idx, 10);
 		idx++;
 		capacities[capacities.size()-1] = stoi(reader.current().substr(idx, -1), NULL, 10);
 		Item items[nums[nums.size()-1]];
+		reader.next();
 		for(int i=0; i<nums[nums.size()-1]; i++){
 			int p = stoi(reader.current(), &idx, 10);
 			idx++;
