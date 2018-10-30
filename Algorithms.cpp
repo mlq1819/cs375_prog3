@@ -45,7 +45,7 @@ for(unsigned int i=low; i<=high; i++)
 	cout << "(" << A[i].respective() << ";" << A[i].getProfit() << "," << A[i].getWeight() << ") ";
 cout << endl;
 #endif	
-	quicksort_helper(A,low,high);
+	quicksort_helper(A,low,high-1);
 #if DEBUG
 cout << "Exiting quicksort: (p/w;p,w)" << endl;
 for(unsigned int i=low; i<=high; i++)
