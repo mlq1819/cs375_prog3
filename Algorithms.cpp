@@ -91,10 +91,6 @@ Algorithm::Algorithm(Item * items, size_t size, unsigned int capacity){
 	this->capacity=capacity;
 }
 
-Algorithm::~Algorithm(){
-	delete this->items;
-}
-
 unsigned int Algorithm::getMaxPossible() const {
 	return getMaxPossible(0);
 }
