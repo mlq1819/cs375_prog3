@@ -42,9 +42,9 @@ int main(int argc, char ** argv){
 		cout << "Bad Output File Name: \"" << argv[2] << "\"; printing to STDOUT instead" << endl;
 		return 1;
 	}
-	vector<int> nums = vectors<int>();
+	vector<int> nums = vector<int>();
 	nums.push_back(0);
-	vector<int> capacities = vectors<int>();
+	vector<int> capacities = vector<int>();
 	capacities.push_back(0);
 	vector<Algorithm> algs = vector<Algorithm>();
 	size_t idx = 0;
@@ -52,8 +52,8 @@ int main(int argc, char ** argv){
 		nums[nums.size()-1] = stoi(reader.current(), &idx, 10);
 		idx++;
 		capacities[capacities.size()-1] = stoi(reader.current().substr(idx, -1), NULL, 10);
-		Item items[num];
-		for(int i=0; i<nums[i].size(); i++){
+		Item items[nums[nums.size()-1]];
+		for(int i=0; i<nums[nums.size()-1]; i++){
 			int p = stoi(reader.current(), &idx, 10);
 			idx++;
 			int w = stoi(reader.current().substr(idx, -1), NULL, 10);
@@ -62,10 +62,10 @@ int main(int argc, char ** argv){
 				break;
 		}
 #if PRESORT
-quicksort(items, 0, (unsigned int) num);
+quicksort(items, 0, nums[nums.size()-1]);
 #endif
-		algs.pushback(Algorithm(items, (unsigned int) num, (unsigned int) capacity));
-	} while(reader.next());
+		algs.push_back(Algorithm(items, (unsigned int) nums[nums.size()-1], (unsigned int) capacities[capacities.size()-1]));
+	} while(!reader.atEnd());
 	for(unsigned int i=0; i<nums.size(); i++){
 		unsigned int computed_profit = 0;
 		clock_t t = clock();
